@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="img/topi-chef.png" />
+    <title>Let's Start</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body class="container">
+    <header class="mt-4">
+        <img-brand class="d-flex align-content-center"></img-brand>
+            <nav class=" d-none d-lg-flex bg-info text-center text-white">
+                <div class="p-2 flex-fill " > <a href="" id="japanese" class="text-white">Japanese</a> </div>
+                <div class="p-2 flex-fill ">Chinese</div>
+                <div class="p-2 flex-fill ">Korea</div>
+                <div class="p-2 flex-fill ">Italia</div>
+                <div class="p-2 flex-fill ">Spesifikasi</div>
+            </nav>
+        <search-recipe class="row mt-3 mb-2"></search-recipe>
+    </header>
+<main class="row p-3 pl-5 pr-5" id="main">
+ 
+</main>
+<footer>
+      <div class=" d-none d-lg-flex  bg-info text-white">
+          <div class="p-2 pl-3 ">Follow US</div>
+          <div class="p-2 pl-3 "> 
+              <i class="fab fa-facebook-f "></i>
+            </div>
+          <div class="p-2 pl-3 ">
+             <i class="fab fa-instagram "></i>
+          </div>
+          <div class="p-2 pl-3 ">
+              <i class="fab fa-twitter "></i>
+          </div>
+          <div class="p-2 pl-3 ">
+              <i class="fab fa-youtube "></i>
+          </div>
+      </div>
+
+      <div class="d-flex bd-highlight  bg-info text-white text-center">
+          <!-- <div class="p-2 flex-grow-1 bd-highlight"> &copy; <span id="year"></span> - KambingKacangKU</div> -->
+          <div class="p-2 flex-grow-1 bd-highlight"> &copy; <span>2020</span> - let's cook </div>
+          <div class="p-2 pl-3  bd-highlight">Tentang Kami</div>
+          <div class="p-2 pr-3 bd-highlight">FAQ</div>
+      </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="ImgBrand.js"></script>
+    <script src="SearchRecipe.js"></script>
+    <script>
+        // 9799e4a8262c49c1b03f3dc9355932b0
+    // b767ad49f6e345529694c796f1488384
+        	$(document).ready(function () {
+                const minProtein = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+                const maxProtein = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+                
+                $.get("https://api.spoonacular.com/recipes/findByNutrients?minCarbs="+minProtein+
+                "&maxCarbs="+maxProtein+"&number=1&apiKey=b767ad49f6e345529694c796f1488384",
+                    function (data) {
+                        $.each(data, function (i) {
+                            console.log(data[i].title);
+                        
+                         
+                            $('#main').append(`<div class="col-lg-3 p-2">
+        <div class="card " style="">
+            <img src="${data[i].image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><a href="${data[i].id}">${data[i].title}</a></h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+  </div>`
+                            );
+            });
+         });
+         
+    });
+  
+    $('#japanese').click(function (e) {
+        e.preventDefault();
+    $('#main').html("");   
+       $.get("https://api.spoonacular.com/recipes/complexSearch?cuisine=Chinese&number=1&apiKey=b767ad49f6e345529694c796f1488384",
+            function (data) {
+                $.each(data.results, function (i) {
+                    console.log(data.results[i].image);
+                    $('#main').append(`<div class="col-lg-3 p-2">
+        <div class="card " style="">
+            <img src="${data.results[i].image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${data.results[i].title}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+  </div>`
+                    );
+                });
+            });
+    });
+    </script>
+</body>
+</html>
