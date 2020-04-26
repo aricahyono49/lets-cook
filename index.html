@@ -72,7 +72,8 @@
     <script>
         // 9799e4a8262c49c1b03f3dc9355932b0
     // b767ad49f6e345529694c796f1488384
-     const apiKey ="apiKey=636bbc3497d5423e828a27c525089040";
+    // 636bbc3497d5423e828a27c525089040
+     const apiKey ="apiKey=9799e4a8262c49c1b03f3dc9355932b0";
         	$(document).ready(function () {
                 const minProtein = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
                 const maxProtein = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
@@ -84,15 +85,17 @@
                             console.log(data[i].title);
                         
                          
-                            $('#main').append(`<div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 text-center" >
+                            $('#main').append(`
+                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 text-center">
+                                <a class="food-recipe " href="${data[i].id}" id="${data[i].image}"
+                                    name="${data[i].title}">
         <div class="card " style="">
             <img src="${data[i].image}" class="card-img-top" alt="...">
             <div class="card-body">
-                <p class="card-title"><a  class="food-recipe " href="${data[i].id}"
-                        id="${data[i].image}">${data[i].title}</a>
+                <p class="card-title">${data[i].title}
                 </p>
             </div>
-        </div>
+        </div></a>
   </div>`
                             );
             });
@@ -101,7 +104,8 @@
               e.preventDefault();
               const a = $(this).attr('href');
               const b = $(this).attr('id');
-              const c = $(this).text();
+              const c = $(this).attr('name');
+            //   const c = $(this).text();
                 $('#main').html("");
                 const test = "https://api.spoonacular.com/recipes/"+a+"/nutritionWidget.json?"+apiKey;
                 console.log(test);
@@ -113,7 +117,7 @@
                                  <img src="${b}" class="card-img-top"
                                      alt="...">
                                  <div class="card-body">
-                                     <h5 class="card-title">${c}</h5>
+                                     <h5 class="card-title text-center">${c}</h5>
                                      <ul class="list-group list-group-flush">
                                          <li class="list-group-item">Calories: ${data.calories}</li>
                                          <li class="list-group-item">Carbs: ${data.carbs}</li>
@@ -128,40 +132,64 @@
                     }
                 );
 
-            //     $.get(test,
-            //     function (data) {
-            //      $('#main').append(`<div class="col-lg-8 pt-lg-4 mt-lg-0 pt-0  mt-3 text-center bg-white rounded">`);
-            //      $.each(data, function (i) {
-            //      console.log(data);
-               
-            //         $('#main').append(`
-            //   <h3 class="text-center">Step</h3>
-            //   <div class="col-12 text-left">
-            //       <ul class="list-group list-group-flush text-justify">
-            //           <li class="list-group-item ">
-            //               <div class="row">
-            //                   <div class="col-lg-1 col-1 pr-lg-0 pr-2">1.</div>
-            //                   <div class="col-lg-11 col-11 pl-lg-0 pr-2">
-            //                       If you have not tried anchovies before - you must try them now! Get over any weird
-            //                       apprehensions
-            //                       or
-            //                       that its just bait or a punchline for a joke about pizza (\"extra anchovies\")! These
-            //                       little
-            //                       suckers
-            //                       are
-            //                       delicious &amp; actually good for you!
-            //                   </div>
-            //               </div>
-            //           </li>
-            //       </ul>
-            //   </div>
-            //     `
-            //     );
-            //       });
-            //        $('#main').append(`</div>`);
-            //     }
-            //     );
+  const test3 = "https://api.spoonacular.com/recipes/"+a+"/ingredientWidget.json?"+apiKey;
 
+  $.get(test3,
+  function (dataI) {
+  $('#main').append(`
+   <div class="col-lg-8 pt-lg-4 mt-lg-0 pt-0  mt-3 text-center bg-white rounded">
+       <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg" class="img-fluid rounded d-lg-none "
+           alt="...">
+       <h5 class=" d-lg-none ">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</h5>
+       <h3>Ingredients</h3>
+       <div class=" row  " id="listIngredients">
+              `);
+              $.each(dataI.ingredients, function (i) {
+             
+              console.log(dataI.ingredients[i].amount.metric.value);
+              $('#listIngredients').append(`
+              <div class="col-5 offset-1 text-left">
+           
+                  <p>${nomor = i+1}) ${dataI.ingredients[i].name} ${dataI.ingredients[i].amount.metric.value}
+                      ${dataI.ingredients[i].amount.metric.unit}</p>
+              </div>
+              `
+              );
+              });
+              $('#main').append(` 
+      </div>
+  `);
+  }
+  );
+
+                const test2 = "https://api.spoonacular.com/recipes/"+a+"/analyzedInstructions?"+apiKey;
+                $.get(test2,
+                function (datal) {
+                 $('#main').append(`
+                 <h3 class="text-center">Step</h3>
+                 <div class="col-12 text-left">
+                     <ul class="list-group list-group-flush text-justify" id="listRecipeStep">
+                 `);
+                 $.each(datal[0].steps, function (i) {
+                 console.log(datal);
+                    $('#listRecipeStep').append(`
+                       <li class="list-group-item ">
+                           <div class="row">
+                               <div class="col-lg-1 col-1 pr-lg-0 pr-2">${datal[0].steps[i].number}.</div>
+                               <div class="col-lg-11 col-11 pl-lg-0 pr-2">
+                                  ${datal[0].steps[i].step}
+                               </div>
+                           </div>
+                       </li>
+                `
+                );
+                  });
+                   $('#main').append(` </ul>
+                   </div>
+                   </div>
+                   `);
+                }
+                );
               });
          });
 
