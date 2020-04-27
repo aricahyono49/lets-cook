@@ -10,22 +10,22 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body class="container px-lg-4 px-md-4 px-0" style="background: ghostwhite;">
-    <header class="mt-4">
-        <img-brand class="d-flex align-content-center"></img-brand>
+    <header class="mt-3">
+        <img-brand class="d-flex align-content-center d-lg-none d-xl-block"></img-brand>
             <nav class=" d-none d-lg-flex bg-info text-center text-white">
                   <div class="p-2 flex-fill "> <i class="fas fa-home"> Home</i></div>
-                <div class="p-2 flex-fill " > <a href="" id="japanese" class="text-white">Japanese</a> </div>
-                <div class="p-2 flex-fill ">Chinese</div>
-                <div class="p-2 flex-fill ">Korea</div>
-                <div class="p-2 flex-fill ">Italia</div>
-                <div class="p-2 flex-fill ">Spanish</div>
+                <div class="p-2 flex-fill " > <a href=""  class="text-white foodOrigin">Japanese</a> </div>
+                <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Chinese</a></div>
+                <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Korean</a></div>
+                <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Italian</a></div>
+                <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Spanish</a></div>
             </nav>
-        <search-recipe class="row mt-3 mb-2"></search-recipe>
+        <search-recipe class="row mt-3 mb-2" ></search-recipe>
     </header>
 
-<div class="row">
+<div class="row d-none d-lg-block d-xl-none">
     <div class="col-lg-8 pl-5" >
-        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide " data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-interval="10000">
                     <img src="img/puasa.jpg" class="d-block w-100" alt="..." style="height: 200px;">
@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="col-lg-4 px-lg-0 rounded" style="background-color: rgb(225, 244, 247)">
-        <ul class="nav nav-pills mb-3 bg-warning" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
                     aria-controls="pills-home" aria-selected="true">Calories</a>
@@ -68,9 +68,30 @@
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">A
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <form class="px-lg-4 ">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Min Protein</label>
+                        <div class="col-sm-7">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-4 col-form-label">Max Protein</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-8">
+                            <button type="submit" class="btn btn-primary">Go</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">..v</div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                d
+            </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">..d.</div>
         </div>
     </div>
@@ -79,7 +100,7 @@
  
 </main>
 <footer>
-<ul class="d-lg-none list-group list-group-flush">
+<ul class="d-lg-none list-group list-group-flush text-center">
     <li class="list-group-item pl-sm-2 pl-md-4"><i class="fas fa-home"> Home</i></li>
     <li class="list-group-item pl-sm-2 pl-md-4">Japanese</li>
     <li class="list-group-item pl-sm-2 pl-md-4">Chinese</li>
@@ -124,7 +145,9 @@
         // 9799e4a8262c49c1b03f3dc9355932b0
     // b767ad49f6e345529694c796f1488384
     // 636bbc3497d5423e828a27c525089040
-     const apiKey ="apiKey=5538dce56bda43fa8b107fe4fdf313da";
+    // 5538dce56bda43fa8b107fe4fdf313d
+    // 8970425faa034116a7ded95951609cdb
+     const apiKey ="8970425faa034116a7ded95951609cdb";
         	$(document).ready(function () {
                 const minProtein = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
                 const maxProtein = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
@@ -133,11 +156,8 @@
                 "&maxCarbs="+maxProtein+"&number=8&"+apiKey,
                     function (data) {
                         $.each(data, function (i) {
-                            console.log(data[i].title);
-                        
-                         
                             $('#main').append(`
-                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 text-center">
+                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 py-sm-2 text-center">
                                 <a class="food-recipe " href="${data[i].id}" id="${data[i].image}"
                                     name="${data[i].title}">
         <div class="card " style="">
@@ -151,129 +171,164 @@
                             );
             });
 
-              $('.food-recipe').click(function (e) {
-              e.preventDefault();
-              const a = $(this).attr('href');
-              const b = $(this).attr('id');
-              const c = $(this).attr('name');
-            //   const c = $(this).text();
-                $('#main').html("");
-                const test = "https://api.spoonacular.com/recipes/"+a+"/nutritionWidget.json?"+apiKey;
-                console.log(test);
-                $.get(test,
-                    function (data) {
-                        $('#main').append(`
-                         <div class="d-none d-lg-block col-lg-4 pl-0 pr-0 pr-lg-3">
-                             <div class="card" style="">
-                                 <img src="${b}" class="card-img-top"
-                                     alt="...">
-                                 <div class="card-body">
-                                     <h5 class="card-title text-center">${c}</h5>
-                                     <ul class="list-group list-group-flush">
-                                         <li class="list-group-item">Calories: ${data.calories}</li>
-                                         <li class="list-group-item">Carbs: ${data.carbs}</li>
-                                         <li class="list-group-item">Fat: ${data.fat}</li>
-                                         <li class="list-group-item">Protein: ${data.protein}</li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
-                        `
-                        );
-                    }
-                );
-
-  const test3 = "https://api.spoonacular.com/recipes/"+a+"/ingredientWidget.json?"+apiKey;
-
-  $.get(test3,
-  function (dataI) {
-  $('#main').append(`
-   <div class="col-lg-8 pt-lg-4 mt-lg-0 pt-0  mt-3 text-center bg-white rounded">
-       <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg" class="img-fluid rounded d-lg-none "
-           alt="...">
-       <h5 class=" d-lg-none ">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</h5>
-       <h3>Ingredients</h3>
-       <div class=" row  " id="listIngredients">
-              `);
-              $.each(dataI.ingredients, function (i) {
-             
-              console.log(dataI.ingredients[i].amount.metric.value);
-              $('#listIngredients').append(`
-              <div class="col-5 offset-1 text-left">
-           
-                  <p>${nomor = i+1}) ${dataI.ingredients[i].name} ${dataI.ingredients[i].amount.metric.value}
-                      ${dataI.ingredients[i].amount.metric.unit}</p>
-              </div>
-              `
-              );
-              });
-              $('#main').append(` 
-      </div>
-  `);
-  }
-  );
-
-                const test2 = "https://api.spoonacular.com/recipes/"+a+"/analyzedInstructions?"+apiKey;
-                $.get(test2,
-                function (datal) {
-                 $('#main').append(`
-                 <h3 class="text-center">Step</h3>
-                 <div class="col-12 text-left">
-                     <ul class="list-group list-group-flush text-justify" id="listRecipeStep">
-                 `);
-                 $.each(datal[0].steps, function (i) {
-                 console.log(datal);
-                    $('#listRecipeStep').append(`
-                       <li class="list-group-item ">
-                           <div class="row">
-                               <div class="col-lg-1 col-1 pr-lg-0 pr-2">${datal[0].steps[i].number}.</div>
-                               <div class="col-lg-11 col-11 pl-lg-0 pr-2">
-                                  ${datal[0].steps[i].step}
-                               </div>
-                           </div>
-                       </li>
-                `
-                );
-                  });
-                   $('#main').append(` </ul>
-                   </div>
-                   </div>
-                   `);
-                }
-                );
-              });
+              recipe()
          });
 
        japanese()
-         
+
+
+   
+  
+  
+    $('#searchFood').keyup(function() {
+         const listSearch =`
+         <ul class="list-group list-group-flush " style="     position: absolute;   z-index: 1;   " id="searchItem">
+             <!-- item List -->
+         </ul>
+         `;
+         const inputSearch = $(this).val();
+         $('#search').html(' ');
+         $.get("https://api.spoonacular.com/food/products/suggest?query="+inputSearch+
+         "&number=7&apiKey=5538dce56bda43fa8b107fe4fdf313da",
+         function (dataSearch) {
+         $('#search').append(listSearch);
+
+         $.each(dataSearch.results, function (i) {
+         $('#searchItem').append(`
+         <li class="list-group-item py-2 px-4">${dataSearch.results[i].title}</li>`
+         );
+         });
+
+         });
+         });
     });
   
-  
     function japanese(){
-        $('#japanese').click(function (e) {
+        $('.foodOrigin').click(function (e) {
         e.preventDefault();
         $('#main').html("");
-        $.get("https://api.spoonacular.com/recipes/complexSearch?cuisine=Chinese&number=8&"+apiKey,
+        const origin = $(this).text();
+        $.get("https://api.spoonacular.com/recipes/complexSearch?cuisine="+origin+"&number=8&"+apiKey,
         function (data) {
         $.each(data.results, function (i) {
         console.log(data.results[i].image);
-        $('#main').append(`<div class="col-lg-3 p-2">
-            <div class="card " style="">
-                <img src="${data.results[i].image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${data.results[i].title}</h5>
-                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>`
+        $('#main').append(`
+       
+         <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 text-center">
+             <a class="food-recipe " href="${data.results[i].id}" id="${data.results[i].image}" name="${data.results[i].title}">
+                 <div class="card " style="">
+                     <img src="${data.results[i].image}" class="card-img-top" alt="...">
+                     <div class="card-body">
+                         <p class="card-title">${data.results[i].title}
+                         </p>
+                     </div>
+                 </div>
+             </a>
+         </div>
+        `
         );
         });
         });
         });
     }
+
+
+    function recipe() { 
+        $('.food-recipe').click(function (e) {
+        e.preventDefault();
+        const a = $(this).attr('href');
+        const b = $(this).attr('id');
+        const c = $(this).attr('name');
+        // const c = $(this).text();
+        $('#main').html("");
+        const templateRecipe = ` <div class="d-none d-lg-block col-lg-4 pl-0 pr-0 pr-lg-3 ">
+            <div class="card" style="" id="nutrition">
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+
+                <!-- This Is Ingredients -->
+                <div class="col-lg-12 pt-lg-4 mt-lg-0 pt-0  mt-3 text-center bg-white rounded">
+                    <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg"
+                        class="img-fluid rounded d-lg-none " alt="...">
+                    <h5 class=" d-lg-none ">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</h5>
+                    <h3>Ingredients</h3>
+                    <div class=" row  " id="listIngredients">
+
+                    </div>
+                </div>
+                <!-- This Is Step -->
+                <div class="col-lg-12  pt-lg-4 mt-lg-0 pt-0  mt-lg-2 text-center bg-white rounded">
+                    <h3 class="text-center">Step</h3>
+                    <div class="col-12 text-left">
+                        <ul class="list-group list-group-flush text-justify" id="listRecipeStep">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        const test = "https://api.spoonacular.com/recipes/"+a+"/nutritionWidget.json?"+apiKey;
+        console.log(test);
+        $.get(test,
+        function (data) {
+        $('#nutrition').append(`
+        <img src="${b}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title text-center">${c}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Calories: ${data.calories}</li>
+                <li class="list-group-item">Carbs: ${data.carbs}</li>
+                <li class="list-group-item">Fat: ${data.fat}</li>
+                <li class="list-group-item">Protein: ${data.protein}</li>
+            </ul>
+        </div>
+        </div>
+        `
+        );
+        }
+        );
+
+        const test3 = "https://api.spoonacular.com/recipes/"+a+"/ingredientWidget.json?"+apiKey;
+        $('#main').html(templateRecipe);
+        $.get(test3,
+        function (dataI) {
+        $.each(dataI.ingredients, function (i) {
+        console.log(dataI.ingredients[i].amount.metric.value);
+        $('#listIngredients').append(`
+        <div class="col-5 offset-1 text-left">
+            <p>${nomor = i+1}) ${dataI.ingredients[i].name} ${dataI.ingredients[i].amount.metric.value}
+                ${dataI.ingredients[i].amount.metric.unit}</p>
+        </div>
+        `
+        );
+        });
+        }
+        );
+
+        const test2 = "https://api.spoonacular.com/recipes/"+a+"/analyzedInstructions?"+apiKey;
+        $.get(test2,
+        function (datal) {
+        $.each(datal[0].steps, function (i) {
+        console.log(datal);
+        $('#listRecipeStep').append(`
+        <li class="list-group-item ">
+            <div class="row">
+                <div class="col-lg-1 col-1 pr-lg-0 pr-2">${datal[0].steps[i].number}.</div>
+                <div class="col-lg-11 col-11 pl-lg-0 pr-2">
+                    ${datal[0].steps[i].step}
+                </div>
+            </div>
+        </li>
+        `
+        );
+        });
+        }
+        );
+
+        });
+     }
     </script>
 </body>
 </html>

@@ -5,7 +5,8 @@ class SearchRecipe extends HTMLElement {
 
     render() {
         this.innerHTML = `<div class="offset-lg-3 col-lg-6 ">
-                  <input class="form-control" type="text" placeholder="Search Your Receipe...">
+                  <input id="searchFood" class="form-control" type="text" placeholder="Search Your Receipe..." >
+                  <span id="search"></span>
         </div>`;
     }
 
