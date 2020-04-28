@@ -1,8 +1,6 @@
 
-//  import resepMakanan from './ResepMakanan.js';
-
  $(document).ready(function () {
-      const apiKey = "apiKey=8970425faa034116a7ded95951609cdb";
+      const apiKey = "apiKey=b767ad49f6e345529694c796f1488384";
     _loadAwal(apiKey);
  });
 
@@ -39,13 +37,13 @@ function _loadAwal(apiKey) {
        function recipe(apiKey) {
            $('.food-recipe').click(function (e) {
                e.preventDefault();
+               $('food').html("");
                const idMakanan      = $(this).attr('href');
                const gambarMakanan  = $(this).attr('id');
                const namaMakanan    = $(this).attr('name');
                const link           = "https://api.spoonacular.com/recipes/"+idMakanan;
-
-               $('food').html("");
-               const resepMakanan = new resepMakanan(idMakanan, gambarMakanan, namaMakanan, link,  apiKey);
+                alert(namaMakanan);
+               const resepMakanan = new ResepMakanan(idMakanan, gambarMakanan, namaMakanan, link,  apiKey);
                resepMakanan.nutrisi();
                resepMakanan.bahan();
                resepMakanan.tahapPembuatan();

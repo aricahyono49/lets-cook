@@ -96,4 +96,3 @@ class ResepMakanan {
     }
 }
 
-export default ResepMakanan;
