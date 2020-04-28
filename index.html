@@ -14,7 +14,7 @@
 <body class="container px-lg-4 px-md-4 px-0" style="background: ghostwhite;">
     <!-- ini Header -->
     <header class="mt-3">
-        <img-brand></img-brand>
+        <img-brand ></img-brand>
         <top-navigasi></top-navigasi>
     </header>
     <!-- ini batas header -->
@@ -81,7 +81,7 @@
         // 5538dce56bda43fa8b107fe4fdf313d
         // 8970425faa034116a7ded95951609cdb
 
-        const apiKey = "apiKey=8970425faa034116a7ded95951609cdb";
+        const apiKey = "apiKey=636bbc3497d5423e828a27c525089040";
         $(document).ready(function () {
            
 
@@ -124,17 +124,17 @@ function pencarianMakanan() {
                         $.each(data.results, function (i) {
                             console.log(data.results[i].image);
                             $('#foodsMenu').append(`
-                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 text-center">
-                                    <a class="food-recipe " href="${data.results[i].id}" id="${data.results[i].image}" name="${data.results[i].title}">
-                                        <div class="card " style="">
-                                            <img src="${data.results[i].image}" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <p class="card-title">${data.results[i].title}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+ <div class="col-lg-3 col-md-4 col-12 p-lg-2 pt-lg-0 p-md-2 pt-md-0 py-sm-2 pt-sm-0 text-center">
+     <a class="food-recipe" href="${data.results[i].id}" id="${data.results[i].image}" name="${data.results[i].title}">
+         <div class="card " style="">
+             <img src="${data.results[i].image}" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <p class="card-title">${data.results[i].title}
+                 </p>
+             </div>
+         </div>
+     </a>
+ </div>
         `);
                         });
                     });

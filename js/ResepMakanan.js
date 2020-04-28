@@ -1,6 +1,6 @@
 class ResepMakanan {
-    constructor(id, gambar, nama, link, apiKey ) {
-        this.idMakanan = id;
+  
+    constructor( gambar, nama, link, apiKey ) {
         this.gambarMakanan = gambar;
         this.namaMakanan = nama;
         this.urlDasar = link;
@@ -39,12 +39,14 @@ class ResepMakanan {
 
 
     nutrisi() {
-        const linkNutrisi = this.urlDasar + "/nutritionWidget.json?" + this.apiKey;
+        const linkNutrisi   = this.urlDasar + "/nutritionWidget.json?" + this.apiKey;
+        const gambarMakanan = this.gambarMakanan;
+        const namaMakanan   = this.namaMakanan;
         $.get(linkNutrisi, function (dataNutrisi) {
             $('#nutrition').append(`
-        <img src="${this.gambarMakanan}" class="card-img-top" alt="...">
+        <img src="${gambarMakanan}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title text-center">${this.namaMakanan}</h5>
+            <h5 class="card-title text-center">${namaMakanan}</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Calories: ${dataNutrisi.calories}</li>
                 <li class="list-group-item">Carbs: ${dataNutrisi.carbs}</li>
@@ -57,16 +59,16 @@ class ResepMakanan {
         });
     }
 
-    bahan() {
-        const linkBahan = this.urlDasar + "/nutritionWidget.json?" + this.apiKey;
+    bahan(){
+        const linkBahan = this.urlDasar + "/ingredientWidget.json?" + this.apiKey;
+        const nomor = 0;
         $('#food').html(this.templateRecipe);
         $.get(linkBahan,
             function (dataBahan) {
                 $.each(dataBahan.ingredients, function (i) {
-                    console.log(dataBahan.ingredients[i].amount.metric.value);
                     $('#listIngredients').append(`
         <div class="col-5 offset-1 text-left">
-            <p>${nomor = i+1}) ${dataBahan.ingredients[i].name} ${dataBahan.ingredients[i].amount.metric.value}
+            <p>${ i+1}) ${dataBahan.ingredients[i].name} ${dataBahan.ingredients[i].amount.metric.value}
                 ${dataBahan.ingredients[i].amount.metric.unit}</p>
         </div>
         `);
@@ -76,7 +78,7 @@ class ResepMakanan {
     }
 
     tahapPembuatan() {
-        const linkPembuatan = this.urlDasar + "/nutritionWidget.json?" + this.apiKey;
+        const linkPembuatan = this.urlDasar + "/analyzedInstructions?" + this.apiKey;
         $.get(linkPembuatan,
             function (dataPembuatan) {
                 $.each(dataPembuatan[0].steps, function (i) {
