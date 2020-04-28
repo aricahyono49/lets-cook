@@ -22,91 +22,19 @@
             </nav>
         <search-recipe class="row mt-3 mb-2" ></search-recipe>
     </header>
+        
 
-<div class="row d-none d-lg-block d-xl-none">
-    <div class="col-lg-8 pl-5" >
-        <div id="carouselExampleInterval" class="carousel slide " data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="10000">
-                    <img src="img/puasa.jpg" class="d-block w-100" alt="..." style="height: 200px;">
-                </div>
-                <div class="carousel-item" data-interval="2000">
-                    <img src="img/corona.jpeg" class="d-block w-100" alt="..." style="height: 200px;">
-                </div>
-                <div class="carousel-item">
-                    <img src="img/Cara-Mencegah-Penularan-Virus-Corona.jpg" data-interval="2000" class="d-block w-100"
-                        alt="..." style="height: 200px;">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4 px-lg-0 rounded" style="background-color: rgb(225, 244, 247)">
-        <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                    aria-controls="pills-home" aria-selected="true">Calories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                    aria-controls="pills-profile" aria-selected="false">Carbs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                    aria-controls="pills-contact" aria-selected="false">Fat</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                    aria-controls="pills-contact" aria-selected="false">Protein</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <form class="px-lg-4 ">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Min Protein</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-4 col-form-label">Max Protein</label>
-                        <div class="col-sm-7">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-4 offset-8">
-                            <button type="submit" class="btn btn-primary">Go</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                d
-            </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">..d.</div>
-        </div>
-    </div>
-</div>
 <main class="row p-lg-3 p-md-3 pl-lg-5 pl-md-5 pr-lg-5 pr-md-5 px-0" id="main">
  
 </main>
 <footer>
 <ul class="d-lg-none list-group list-group-flush text-center">
     <li class="list-group-item pl-sm-2 pl-md-4"><i class="fas fa-home"> Home</i></li>
-    <li class="list-group-item pl-sm-2 pl-md-4">Japanese</li>
-    <li class="list-group-item pl-sm-2 pl-md-4">Chinese</li>
-    <li class="list-group-item pl-sm-2 pl-md-4">Korea</li>
-    <li class="list-group-item pl-sm-2 pl-md-4">Italia</li>
-    <li class="list-group-item pl-sm-2 pl-md-4">Spanish</li>
+    <li class="list-group-item pl-sm-2 pl-md-4"><a href="" class="text-dark foodOrigin">Japanese</a></li>
+    <li class="list-group-item pl-sm-2 pl-md-4"><a href="" class="text-dark foodOrigin">Chinese</a></li>
+    <li class="list-group-item pl-sm-2 pl-md-4"><a href="" class="text-dark foodOrigin">Korean</a></li>
+    <li class="list-group-item pl-sm-2 pl-md-4"><a href="" class="text-dark foodOrigin">Italian</a></li>
+    <li class="list-group-item pl-sm-2 pl-md-4"><a href="" class="text-dark foodOrigin">Spanih</a></li>
 </ul>
 
     <div class=" d-none d-lg-flex  bg-info text-white">
@@ -147,7 +75,58 @@
     // 636bbc3497d5423e828a27c525089040
     // 5538dce56bda43fa8b107fe4fdf313d
     // 8970425faa034116a7ded95951609cdb
-     const apiKey ="8970425faa034116a7ded95951609cdb";
+
+    const templateFoodMenu = `
+                
+<div class="col-lg-12">
+<div class="row d-none d-sm-block">
+    <div class="col-lg-10 offset-1">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="10000">
+                    <img src="img/ramadan.jpeg" class="d-block w-100" alt="..." style="height: 200px;">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                    <img src="img/ramadan3.jpg" class="d-block w-100" alt="..." style="height: 200px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/corona1.jpeg" data-interval="2000" class="d-block w-100" alt="..."
+                        style="height: 200px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/corona2.jpeg" data-interval="2000" class="d-block w-100" alt="..."
+                        style="height: 200px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/corona3.jpeg" data-interval="2000" class="d-block w-100" alt="..."
+                        style="height: 200px;">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row mt-4 pl-2 d-block">
+    <div class="col-12">
+        <b>
+            <h4>
+                Makanan Rumahan!
+            </h4>
+        </b>
+    </div>
+</div>
+<div class="row" id="foodMenu"></div>
+</div>
+    `;
+
+     const apiKey ="apiKey=9799e4a8262c49c1b03f3dc9355932b0";
         	$(document).ready(function () {
                 const minProtein = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
                 const maxProtein = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
@@ -155,9 +134,11 @@
                 $.get("https://api.spoonacular.com/recipes/findByNutrients?minCarbs="+minProtein+
                 "&maxCarbs="+maxProtein+"&number=8&"+apiKey,
                     function (data) {
+
+                       $('#main').append(templateFoodMenu);
                         $.each(data, function (i) {
-                            $('#main').append(`
-                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 p-md-2 py-sm-2 text-center">
+                            $('#foodMenu').append(`
+                                <div class="col-lg-3 col-md-4 col-12 p-lg-2 pt-lg-0 p-md-2 pt-md-0 py-sm-2 pt-sm-0 text-center">
                                 <a class="food-recipe " href="${data[i].id}" id="${data[i].image}"
                                     name="${data[i].title}">
         <div class="card " style="">
