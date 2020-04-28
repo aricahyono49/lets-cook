@@ -1,7 +1,12 @@
 
  $(document).ready(function () {
-      const apiKey = "apiKey=636bbc3497d5423e828a27c525089040";
+      const apiKey = "apiKey=6be1ff3031a147fbb16d91a15d30dae6";
+        let Menu1 = new Menu(apiKey);
+
     _loadAwal(apiKey);
+
+     Menu1.pencarianMakanan();
+     Menu1.foodOrigin();
  });
 
 function _loadAwal(apiKey) {
@@ -43,8 +48,8 @@ function _loadAwal(apiKey) {
                const namaMakanan    = $(this).attr('name');
                const link           = "https://api.spoonacular.com/recipes/"+idMakanan;
 
-               const Makanan = new ResepMakanan( gambarMakanan, namaMakanan, link, apiKey);
-               Makanan.nutrisi();
+               const Makanan = new ResepMakanan( link, apiKey);
+               Makanan.nutrisi(gambarMakanan,namaMakanan);
                Makanan.bahan();
                Makanan.tahapPembuatan();
            });

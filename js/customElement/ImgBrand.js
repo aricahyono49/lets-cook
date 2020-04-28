@@ -4,11 +4,10 @@ class ImgBrand extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `
-        <div div class = " flex-fill d-flex  d-lg-none " >
-                <img src="img/Lets'cook3.png" alt="" style="height: 150px;" class=" ">
-            </div>`
-            ;
+               this.innerHTML = `
+            <div class=" flex-fill text-center ">
+                <img src="img/Lets'cook3.png" alt="" style="height: 150px;">
+            </div>`;
     }
 
 }

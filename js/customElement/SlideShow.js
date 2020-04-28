@@ -6,7 +6,7 @@ class SlideShow extends HTMLElement {
     render() {
         this.innerHTML = `
        <div div class = "row d-none d-sm-block" >
-            <div class="col-lg-8 offset-2 ">
+            <div class="col-lg-8 offset-lg-2 col-md-12 ">
                 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-interval="10000">

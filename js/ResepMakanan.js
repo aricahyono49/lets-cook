@@ -1,8 +1,6 @@
 class ResepMakanan {
   
-    constructor( gambar, nama, link, apiKey ) {
-        this.gambarMakanan = gambar;
-        this.namaMakanan = nama;
+    constructor( link, apiKey ) {
         this.urlDasar = link;
         this.apiKey = apiKey;
     }
@@ -37,11 +35,24 @@ class ResepMakanan {
             </div>
         </div>`;
 
+         get gambar() {
+             return this._gambar;
+         }
 
-    nutrisi() {
+         set gambar(value) {
+             this._gambar = value;
+         }
+
+    nutrisi(gambarMakanan, namaMakanan) {
         const linkNutrisi   = this.urlDasar + "/nutritionWidget.json?" + this.apiKey;
-        const gambarMakanan = this.gambarMakanan;
-        const namaMakanan   = this.namaMakanan;
+     console.log(gambarMakanan);
+     console.log('halo');
+     
+     console.log(this.gambar);
+     console.log(namaMakanan);
+     console.log(linkNutrisi);
+     
+     
         $.get(linkNutrisi, function (dataNutrisi) {
             $('#nutrition').append(`
         <img src="${gambarMakanan}" class="card-img-top" alt="...">
