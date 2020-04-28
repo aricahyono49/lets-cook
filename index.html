@@ -72,6 +72,7 @@
     <script src="js/customElement/SlideShow.js"></script>
     <script src="js/customElement/FoodsMenu.js"></script>
     <script src="js/customElement/SearchFood.js"></script>
+    <script src="js/Main.js"></script>
     <script>
         // 9799e4a8262c49c1b03f3dc9355932b0
         // b767ad49f6e345529694c796f1488384
@@ -81,33 +82,7 @@
 
         const apiKey = "apiKey=8970425faa034116a7ded95951609cdb";
         $(document).ready(function () {
-            const minProtein = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
-            const maxProtein = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
-
-            $.get("https://api.spoonacular.com/recipes/findByNutrients?minCarbs=" + minProtein +
-                "&maxCarbs=" + maxProtein + "&number=8&" + apiKey,
-                function (data) {
-
-                    $('#food').append("<foods-menu></foods-menu>");
-                    $.each(data, function (i) {
-                        $('#foodsMenu').append(`
-                            <div class="col-lg-3 col-md-4 col-12 p-lg-2 pt-lg-0 p-md-2 pt-md-0 py-sm-2 pt-sm-0 text-center">
-                                <a class="food-recipe " href="${data[i].id}" id="${data[i].image}"
-                                    name="${data[i].title}">
-                                    <div class="card " style="">
-                                        <img src="${data[i].image}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-title">${data[i].title}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        `);
-                    });
-
-                    recipe()
-                });
+           
 
             foodOrigin()
             
@@ -124,8 +99,7 @@ function pencarianMakanan() {
     const inputSearch = $(this).val();
     $('#search').html(' ');
     $.get("https://api.spoonacular.com/food/products/suggest?query=" + inputSearch +
-    "&number=7&apiKey=5538dce56bda43fa8b107fe4fdf313da",
-    function (dataSearch) {
+    "&number=7&apiKey=5538dce56bda43fa8b107fe4fdf313da", function (dataSearch) {
     $('#search').append(listSearch);
 
     $.each(dataSearch.results, function (i) {
@@ -167,99 +141,7 @@ function pencarianMakanan() {
         }
 
 
-        function recipe() {
-            $('.food-recipe').click(function (e) {
-                e.preventDefault();
-                const a = $(this).attr('href');
-                const b = $(this).attr('id');
-                const c = $(this).attr('name');
-                // const c = $(this).text();
-                $('food').html("");
-                const templateRecipe = ` <div class="d-none d-lg-block col-lg-4 pl-0 pr-0 pr-lg-3 ">
-            <div class="card" style="" id="nutrition">
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="row">
-
-                <!-- This Is Ingredients -->
-                <div class="col-lg-12 pt-lg-4 mt-lg-0 pt-0  mt-3 text-center bg-white rounded">
-                    <img src="https://spoonacular.com/recipeImages/716429-556x370.jpg"
-                        class="img-fluid rounded d-lg-none " alt="...">
-                    <h5 class=" d-lg-none ">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</h5>
-                    <h3>Ingredients</h3>
-                    <div class=" row  " id="listIngredients">
-
-                    </div>
-                </div>
-                <!-- This Is Step -->
-                <div class="col-lg-12  pt-lg-4 mt-lg-0 pt-0  mt-lg-2 text-center bg-white rounded">
-                    <h3 class="text-center">Step</h3>
-                    <div class="col-12 text-left">
-                        <ul class="list-group list-group-flush text-justify" id="listRecipeStep">
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>`;
-                const test = "https://api.spoonacular.com/recipes/" + a + "/nutritionWidget.json?" + apiKey;
-                console.log(test);
-                $.get(test,
-                    function (data) {
-                        $('#nutrition').append(`
-        <img src="${b}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title text-center">${c}</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Calories: ${data.calories}</li>
-                <li class="list-group-item">Carbs: ${data.carbs}</li>
-                <li class="list-group-item">Fat: ${data.fat}</li>
-                <li class="list-group-item">Protein: ${data.protein}</li>
-            </ul>
-        </div>
-        </div>
-        `);
-                    }
-                );
-
-                const test3 = "https://api.spoonacular.com/recipes/" + a + "/ingredientWidget.json?" + apiKey;
-                $('#food').html(templateRecipe);
-                $.get(test3,
-                    function (dataI) {
-                        $.each(dataI.ingredients, function (i) {
-                            console.log(dataI.ingredients[i].amount.metric.value);
-                            $('#listIngredients').append(`
-        <div class="col-5 offset-1 text-left">
-            <p>${nomor = i+1}) ${dataI.ingredients[i].name} ${dataI.ingredients[i].amount.metric.value}
-                ${dataI.ingredients[i].amount.metric.unit}</p>
-        </div>
-        `);
-                        });
-                    }
-                );
-
-                const test2 = "https://api.spoonacular.com/recipes/" + a + "/analyzedInstructions?" + apiKey;
-                $.get(test2,
-                    function (datal) {
-                        $.each(datal[0].steps, function (i) {
-                            console.log(datal);
-                            $('#listRecipeStep').append(`
-        <li class="list-group-item ">
-            <div class="row">
-                <div class="col-lg-1 col-1 pr-lg-0 pr-2">${datal[0].steps[i].number}.</div>
-                <div class="col-lg-11 col-11 pl-lg-0 pr-2">
-                    ${datal[0].steps[i].step}
-                </div>
-            </div>
-        </li>
-        `);
-                        });
-                    }
-                );
-
-            });
-        }
+      
     </script>
 </body>
 
