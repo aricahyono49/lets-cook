@@ -1,4 +1,5 @@
-import $ from "jquery";
+// import $ from "jquery";
+// window.$ = $;
 class Makanan {
   
     constructor( link, apiKey ) {
@@ -100,3 +101,4 @@ templateRecipe = `
 
 }
 
+// export default Makanan;

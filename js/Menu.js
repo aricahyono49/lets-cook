@@ -1,4 +1,6 @@
-import $ from "jquery";
+// import Makanan from "./Makanan.js";
+// import $ from "jquery";
+// window.$ = $;
 class Menu {
    constructor(apiKey) {
        this.apiKey = apiKey;
@@ -118,3 +120,4 @@ halamanUtama() {
 
 }
 
+// export default Menu;
