@@ -6,12 +6,12 @@ class TopNavigasi extends HTMLElement {
     render() {
         this.innerHTML = `
                 <nav class=" d-none d-lg-flex bg-info text-center text-white">
-                    <div class="p-2 flex-fill "> <i class="fas fa-home"> Home</i></div>
-                    <div class="p-2 flex-fill "> <a href="" class="text-white foodOrigin">Japanese</a> </div>
-                    <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Chinese</a></div>
-                    <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Korean</a></div>
-                    <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Italian</a></div>
-                    <div class="p-2 flex-fill "><a href="" class="text-white foodOrigin">Spanish</a></div>
+                    <a href="index.html" class="text-white p-2 flex-fill"><i class="fas fa-home"> Home</i></a>
+                    <a href="" class="text-white makananAsal p-2 flex-fill">Japanese</a>
+                    <a href="" class="text-white makananAsal p-2 flex-fill">Chinese</a>
+                    <a href="" class="text-white makananAsal p-2 flex-fill">Korean</a>
+                    <a href="" class="text-white makananAsal p-2 flex-fill">Italian</a>
+                    <a href="" class="text-white makananAsal p-2 flex-fill">Spanish</a>
                 </nav>
         `;
     }

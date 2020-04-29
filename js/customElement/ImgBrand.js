@@ -6,7 +6,7 @@ class ImgBrand extends HTMLElement {
     render() {
                this.innerHTML = `
             <div class=" flex-fill text-center ">
-                <img src="img/Lets'cook3.png" alt="" style="height: 150px;">
+                <img src="img/Lets'cook3.png" alt="" class="img-brand">
             </div>`;
     }
 

@@ -10,22 +10,19 @@ class SlideShow extends HTMLElement {
                 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-interval="10000">
-                            <img src="img/ramadan.jpeg" class="d-block w-100" alt="..." style="height: 200px;">
+                            <img src="img/ramadan.jpeg" class="d-block w-100 slide-show" >
                         </div>
                         <div class="carousel-item" data-interval="2000">
-                            <img src="img/ramadan3.jpg" class="d-block w-100" alt="..." style="height: 200px;">
+                            <img src="img/ramadan3.jpg" class="d-block w-100 slide-show" >
                         </div>
                         <div class="carousel-item">
-                            <img src="img/corona1.jpeg" data-interval="2000" class="d-block w-100" alt="..."
-                                style="height: 200px;">
+                            <img src="img/corona1.jpeg" data-interval="2000" class="d-block w-100 slide-show" >
                         </div>
                         <div class="carousel-item">
-                            <img src="img/corona2.jpeg" data-interval="2000" class="d-block w-100" alt="..."
-                                style="height: 200px;">
+                            <img src="img/corona2.jpeg" data-interval="2000" class="d-block w-100 slide-show" >
                         </div>
                         <div class="carousel-item">
-                            <img src="img/corona3.jpeg" data-interval="2000" class="d-block w-100" alt="..."
-                                style="height: 200px;">
+                            <img src="img/corona3.jpeg" data-interval="2000" class="d-block w-100 slide-show" >
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
