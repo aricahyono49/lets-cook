@@ -89,6 +89,8 @@ class ResepMakanan {
     }
 
     tahapPembuatan() {
+         $('#search').html('');
+         $('#searchFood').val('');
         const linkPembuatan = this.urlDasar + "/analyzedInstructions?" + this.apiKey;
         $.get(linkPembuatan,
             function (dataPembuatan) {

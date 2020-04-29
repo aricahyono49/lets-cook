@@ -16,11 +16,15 @@ class Menu {
             "&number=7&" + apiKey;
           $.get(linkPencarian,
               function (dataSearch) {
+
+                
                   $('#search').append(listSearch);
 
                   $.each(dataSearch.results, function (i) {
                       $('#searchItem').append(`
-    <a href = "${dataSearch.results[i].id}" name="${dataSearch.results[i].title}" class="food-recipe" > <li class = "list-group-item py-2 px-4" > 
+    <a href = "${dataSearch.results[i].id}" name="${dataSearch.results[i].title}" 
+    id = "${`https://spoonacular.com/recipeImages/${dataSearch.results[i].id}-312x231.jpg`}"
+    class = "food-recipe" > <li class = "list-group-item py-2 px-4" >
     ${dataSearch.results[i].title}
      </li ></a > `);
                   });
@@ -29,14 +33,11 @@ class Menu {
  $('.food-recipe').click(function (e) {
      e.preventDefault();
      $('food').html("");
-     const idMakanan = $(this).attr('href');
-     const linkGambar = 'https://api.spoonacular.com/food/products/' + idMakanan + "?" + apiKey;
+    
      
-     $.get(linkGambar, function (dataGambar) {
-          gambar = dataGambar.images[1];
-     });
+   
 
-
+ const idMakanan = $(this).attr('href');
      const gambarMakanan = $(this).attr('id') ? $(this).attr('id') : gambar;
      const namaMakanan = $(this).attr('name');
      const link = "https://api.spoonacular.com/recipes/" + idMakanan;

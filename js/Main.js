@@ -1,12 +1,12 @@
 
  $(document).ready(function () {
-      const apiKey = "apiKey=6be1ff3031a147fbb16d91a15d30dae6";
+      const apiKey = "apiKey=81ebd2b4abd8437c93a9f590a4ff1942";
         let Menu1 = new Menu(apiKey);
 
+        Menu1.pencarianMakanan();
+        Menu1.foodOrigin();
     _loadAwal(apiKey);
 
-     Menu1.pencarianMakanan();
-     Menu1.foodOrigin();
  });
 
 function _loadAwal(apiKey) {
@@ -43,6 +43,7 @@ function _loadAwal(apiKey) {
            $('.food-recipe').click(function (e) {
                e.preventDefault();
                $('food').html("");
+              
                const idMakanan      = $(this).attr('href');
                const gambarMakanan  = $(this).attr('id');
                const namaMakanan    = $(this).attr('name');
@@ -52,5 +53,8 @@ function _loadAwal(apiKey) {
                Makanan.nutrisi(gambarMakanan,namaMakanan);
                Makanan.bahan();
                Makanan.tahapPembuatan();
-           });
+             
+           }
+           );
+            
        }
