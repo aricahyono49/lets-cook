@@ -1,3 +1,4 @@
+import $ from "jquery";
 class Makanan {
   
     constructor( link, apiKey ) {
@@ -5,7 +6,11 @@ class Makanan {
         this.apiKey = apiKey;
     }
 
-    templateRecipe = ` 
+    
+
+    nutrisi(gambarMakanan, namaMakanan) {
+
+templateRecipe = ` 
     <div class="d-none d-lg-block col-lg-4 pl-0 pr-0 pr-lg-3 ">
          <div class="card" style="" id="nutrition"></div></div>
             <div class="col-lg-8">
@@ -34,7 +39,6 @@ class Makanan {
             </div>          
     `;
 
-    nutrisi(gambarMakanan, namaMakanan) {
         $('food').html("");
         $('#food').html(this.templateRecipe);
         $('#search').html('');

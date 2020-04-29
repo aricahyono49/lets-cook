@@ -1,3 +1,4 @@
+import $ from "jquery";
 class Menu {
    constructor(apiKey) {
        this.apiKey = apiKey;
